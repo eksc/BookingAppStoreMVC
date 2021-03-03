@@ -1,0 +1,72 @@
+﻿@using BookingAppStoreMVC.Models;
+@using BookingAppStoreMVC.Helpres;
+@model IEnumerable<Book>
+@{
+    ViewBag.Title = "Книжный магазин";
+}
+
+<a href="/Home/Create">Создать</a>
+
+<div>
+    <h3>Распродажа книг</h3>
+    <table>
+        <tr>
+            <td><p>Название книги</p></td>
+            <td><p>Автор</p></td>
+            <td><p>Цена</p></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        @foreach(Book b in Model)
+        {
+            <tr>
+                <td><p>@b.Name</p></td>
+                <td><p>@b.Author</p></td>
+                <td><p>@b.Price</p></td>
+                <td><p><a href="/Home/Buy/@b.Id">Купить</a></p></td>
+                <td><p><a href="/Home/Delete/@b.Id">Удалить</a></p></td>
+                <td><p><a href="/Home/Edit/@b.Id">Редактировать</a></p></td>
+            </tr>
+        }
+    </table>
+</div>
+
+@helper BookList(IEnumerable<Book> books)
+{ 
+    <ul>
+        @foreach(var book in books)
+        {
+            <li>@book.Name</li>
+        }
+    </ul>
+}
+
+<h3>Список книг</h3>
+@BookList(Model)
+
+@Html.CreateList(new string[] { "Russia", "USA", "Sweden" })
+@ListHelper.CreateList(Html, new string[] { "Russia", "USA", "Sweden" })
+
+@Html.Action("GetList")
+
+@using (Html.BeginForm("GetForm", "Home", FormMethod.Post))
+{
+    @Html.DropDownList("author", ViewBag.Authors as SelectList)
+    @Html.RadioButton("color", "red")
+    <span>Красный</span>
+    @Html.RadioButton("color", "blue")
+    <span>Синий</span>
+    <div></div>
+    @Html.TextArea("text", "Привет мир", 5, 50, null)
+    <input type="submit" value="Send" />
+}
+
+
+@*@Html.Partial("GetList", new string[] { "Russia", "USA", "Sweden" })*@
+
+@*@{Html.RenderPartial("GetList");}*@
+
+@section Footer {
+    Все права защищены.
+}

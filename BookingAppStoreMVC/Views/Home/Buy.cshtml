@@ -1,0 +1,52 @@
+﻿@model BookingAppStoreMVC.Models.Purchase
+@{
+    ViewBag.Title = "Покупка книги";
+}
+
+    <div>
+        <h3>Форма оформления покупки</h3>
+
+        @using (Html.BeginForm("Buy", "Home", FormMethod.Post))
+        {
+            @*<input type="hidden" value="@ViewBag.BookId" name="BookId" />*@
+            @Html.HiddenFor(m => m.BookId)
+            <table>
+                <tr>
+                    <td>
+                        <p>
+                            @*Введите своё имя*@
+                            @Html.LabelFor(m => m.Person, "Введите имя")
+                        </p>
+                    </td>
+                    <td>
+                        @*<input type="text" name="Person" />*@
+                        @Html.TextBoxFor(m => m.Person )
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            @*Введите адрес*@
+                            @Html.LabelFor(m => m.Address, "Введите адрес")
+                        </p>
+                    </td>
+                    <td>
+                        @*<input type="text" name="Address" />*@
+                        @Html.TextBoxFor(m => m.Address)
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="Отправить" />
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+
+@section Footer {
+    Все права защищены.
+}

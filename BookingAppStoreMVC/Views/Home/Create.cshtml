@@ -1,0 +1,22 @@
+﻿@model BookingAppStoreMVC.Models.Book
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Новая книга</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Name, "Название книги") <br/>
+    @Html.TextBoxFor(m => m.Name) <br/><br />
+
+    @Html.LabelFor(m => m.Author, "Автор") <br/>
+    @Html.TextBoxFor(m => m.Author) <br/><br />
+
+    @Html.LabelFor(m => m.Price, "Цена") <br/>
+    @Html.TextBoxFor(m => m.Price) <br/><br />
+
+    <input type="submit" value="Добавить" />
+}
+

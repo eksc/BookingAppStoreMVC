@@ -1,0 +1,18 @@
+﻿@model BookingAppStoreMVC.Models.Book
+
+@{
+    ViewBag.Title = "GetBook";
+}
+
+<h2>GetBook</h2>
+
+@Html.Display("Name") <br/>
+@Html.Display("Author") <br/>
+@Html.Display("Price") <br/>
+
+@Html.DisplayFor(m => m.Name) <br/>
+@Html.DisplayFor(m => m.Author) <br/>
+@Html.DisplayFor(m => m.Price) <br/>
+
+@Html.DisplayForModel()
+
